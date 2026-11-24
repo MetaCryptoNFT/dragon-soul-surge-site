@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dragon Soul Surge</title>
+<meta name="description" content="The cinematic creative studio behind the world of Aethel — character art, films, and 3D worlds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141010;--ash:#201812;--bone:#F4EEE4;
+    --bone-dim:rgba(244,238,228,.62);--bone-faint:rgba(244,238,228,.42);
+    --line:rgba(244,238,228,.14);
+    --gold:#F4B23E;--ember:#EE7A4E;--soul:#8A7BF2;
+    --flame:linear-gradient(105deg,var(--gold) 0%,var(--ember) 46%,var(--soul) 105%);
+    --measure:60ch;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ink);color:var(--bone);
+    font-family:"Space Grotesk",system-ui,sans-serif;
+    font-size:clamp(1rem,.96rem + .2vw,1.06rem);line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;line-height:1.05;margin:0}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+
+  header{position:sticky;top:0;z-index:20;
+    background:color-mix(in srgb,var(--ink) 82%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0;flex-wrap:wrap}
+  .mark{display:flex;align-items:center;gap:11px;font-family:"Fraunces",serif;font-weight:600;font-size:1.16rem;text-decoration:none}
+  .sigil{width:26px;height:26px;flex:0 0 auto}
+  .word{background:var(--flame);-webkit-background-clip:text;background-clip:text;color:transparent}
+  nav{display:flex;gap:clamp(16px,3vw,30px);flex-wrap:wrap}
+  nav a{text-decoration:none;color:var(--bone-dim);font-size:.95rem;padding:4px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+  nav a:hover,nav a:focus-visible{color:var(--bone);border-color:var(--ember)}
+
+  .hero{position:relative;min-height:min(92vh,780px);display:flex;align-items:flex-end;overflow:hidden}
+  .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;animation:kenburns 18s ease-out both}
+  @keyframes kenburns{from{transform:scale(1.06)}to{transform:scale(1)}}
+  .hero-scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,16,16,.94),rgba(20,16,16,.30) 52%,rgba(20,16,16,.6))}
+  .hero .wrap{position:relative;z-index:2;padding-top:120px;padding-bottom:clamp(40px,8vw,86px)}
+  .kicker{color:var(--bone-dim);margin:0 0 20px;max-width:36ch}
+  h1.title{font-size:clamp(2.8rem,10vw,6.2rem);font-weight:600;letter-spacing:-.015em}
+  h1.title .l2{display:block;background:var(--flame);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{margin:24px 0 0;max-width:50ch;color:var(--bone-dim);font-size:clamp(1.05rem,1rem + .4vw,1.24rem)}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+  .btn{display:inline-block;text-decoration:none;padding:13px 24px;border-radius:2px;font-weight:500;transition:transform .15s,box-shadow .2s,border-color .2s}
+  .btn-solid{background:var(--flame);color:#1a1108;box-shadow:0 8px 34px rgba(238,122,78,.3)}
+  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 12px 42px rgba(238,122,78,.45)}
+  .btn-ghost{border:1px solid var(--line);color:var(--bone)}
+  .btn-ghost:hover{border-color:var(--ember)}
+
+  section{padding:clamp(56px,10vw,104px) 0}
+  .head{max-width:var(--measure);margin-bottom:clamp(26px,5vw,48px)}
+  .head h2{font-size:clamp(1.9rem,4.4vw,2.9rem)}
+  .head p{color:var(--bone-dim);margin:14px 0 0}
+
+  .gallery{column-count:3;column-gap:14px}
+  figure{break-inside:avoid;margin:0 0 14px;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:3px;background:var(--ash)}
+  .gallery figure img{width:100%;transition:transform .6s ease}
+  .gallery figure:hover img{transform:scale(1.035)}
+  .cap{position:absolute;left:0;right:0;bottom:0;padding:16px 16px 14px;
+    background:linear-gradient(to top,rgba(10,7,6,.85),transparent);
+    font-size:.92rem;opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s}
+  .gallery figure:hover .cap,.gallery figure:focus-within .cap{opacity:1;transform:none}
+
+  .films{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .film{margin:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#0d0a09}
+  .film video{width:100%;display:block;aspect-ratio:3/2;object-fit:cover;background:#000}
+  .film figcaption{padding:12px 15px;color:var(--bone-dim);font-size:.9rem}
+
+  .about{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(30px,6vw,66px);align-items:center}
+  .about p{max-width:var(--measure);color:var(--bone-dim)}
+  .about p + p{margin-top:18px}
+  .about-portrait{margin:0;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--ash);position:relative}
+  .about-portrait img{width:100%}
+  .about-portrait .cap{position:static;opacity:1;transform:none;background:none;padding:10px 4px 0;color:var(--bone-faint);font-size:.82rem}
+
+  .contact h2{font-size:clamp(2rem,6vw,3.4rem);max-width:17ch}
+  .contact .flame{background:var(--flame);-webkit-background-clip:text;background-clip:text;color:transparent}
+  footer{border-top:1px solid var(--line);padding:32px 0;color:var(--bone-faint);font-size:.9rem}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  @media (max-width:900px){.gallery{column-count:2}.about{grid-template-columns:1fr}}
+  @media (max-width:700px){.films{grid-template-columns:1fr}}
+  @media (max-width:560px){.gallery{column-count:1}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="#top" aria-label="Dragon Soul Surge home">
+      <svg class="sigil" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="32" y2="32">
+          <stop offset="0" stop-color="#F4B23E"/><stop offset=".5" stop-color="#EE7A4E"/><stop offset="1" stop-color="#8A7BF2"/>
+        </linearGradient></defs>
+        <path d="M9 26C2 22 3 10 9 6c1 6-2 9 1 13 2 3 5 3 6 1" stroke="url(#g)" stroke-width="2.1" stroke-linecap="round"/>
+        <path d="M23 26c7-4 6-16 0-20-1 6 2 9-1 13-2 3-5 3-6 1" stroke="url(#g)" stroke-width="2.1" stroke-linecap="round"/>
+        <circle cx="16" cy="20" r="1.7" fill="url(#g)"/>
+      </svg>
+      <span class="word">Dragon Soul Surge</span>
+    </a>
+    <nav>
+      <a href="#gallery">Gallery</a>
+      <a href="#films">Films</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+<section class="hero">
+  <img class="hero-img" src="assets/img_01_a9a306400f77.jpg" alt="Aethel, white hair and ram horns, holding a small flame">
+  <div class="hero-scrim"></div>
+  <div class="wrap">
+    <p class="kicker">A cinematic creative studio, built and run by one person.</p>
+    <h1 class="title">The world of<span class="l2">Aethel.</span></h1>
+    <p class="lede">White hair, ram horns, and a camera that never blinks — character art, films, and 3D worlds made frame by frame.</p>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="#gallery">See the gallery</a>
+      <a class="btn btn-ghost" href="#films">Watch a film</a>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="head">
+      <h2>Gallery</h2>
+      <p>Stills from the ongoing world of Aethel — sunlit boardwalks, neon interiors, rain, and quiet studio light.</p>
+    </div>
+    <div class="gallery">
+      <figure><img src="assets/img_02_99e6452154e7.jpg" alt="Aethel — Boardwalk, golden hour" loading="lazy"><figcaption class="cap">Boardwalk, golden hour</figcaption></figure>
+      <figure><img src="assets/img_03_2eb7bcb5f289.jpg" alt="Aethel — Rain and neon" loading="lazy"><figcaption class="cap">Rain and neon</figcaption></figure>
+      <figure><img src="assets/img_04_347328538904.jpg" alt="Aethel — Among the books" loading="lazy"><figcaption class="cap">Among the books</figcaption></figure>
+      <figure><img src="assets/img_05_f4a521fc168d.jpg" alt="Aethel — Venice, in green" loading="lazy"><figcaption class="cap">Venice, in green</figcaption></figure>
+      <figure><img src="assets/img_06_a403780c6c76.jpg" alt="Aethel — Starlit, uptown" loading="lazy"><figcaption class="cap">Starlit, uptown</figcaption></figure>
+      <figure><img src="assets/img_07_c6efa3ea8348.jpg" alt="Aethel — Last light" loading="lazy"><figcaption class="cap">Last light</figcaption></figure>
+      <figure><img src="assets/img_08_bc27a0f46253.jpg" alt="Aethel — Ash and light" loading="lazy"><figcaption class="cap">Ash and light</figcaption></figure>
+      <figure><img src="assets/img_09_b8767632df2b.jpg" alt="Aethel — The jasmine gate" loading="lazy"><figcaption class="cap">The jasmine gate</figcaption></figure>
+      <figure><img src="assets/img_10_4e6eb87e8786.jpg" alt="Aethel — Tokyo, midnight" loading="lazy"><figcaption class="cap">Tokyo, midnight</figcaption></figure>
+      <figure><img src="assets/img_11_420be4175c49.jpg" alt="Aethel — Quiet green" loading="lazy"><figcaption class="cap">Quiet green</figcaption></figure>
+      <figure><img src="assets/img_12_0263dc51b756.jpg" alt="Aethel — Late shift" loading="lazy"><figcaption class="cap">Late shift</figcaption></figure>
+      <figure><img src="assets/img_13_5bae1b305aae.jpg" alt="Aethel — The other self" loading="lazy"><figcaption class="cap">The other self</figcaption></figure>
+      <figure><img src="assets/img_14_9262e62b1d99.jpg" alt="Aethel — Off-world, resting" loading="lazy"><figcaption class="cap">Off-world, resting</figcaption></figure>
+      <figure><img src="assets/img_15_62ff634dd7b3.jpg" alt="Aethel — Between rounds" loading="lazy"><figcaption class="cap">Between rounds</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="films">
+  <div class="wrap">
+    <div class="head">
+      <h2>Films</h2>
+      <p>Short moving pieces from the world of Aethel. Tap play.</p>
+    </div>
+    <div class="films">
+      <figure class="film"><video controls loop muted playsinline preload="none" poster="assets/img_16_7aabe6cac307.jpg"><source src="assets/film_17_af53ad20ae00.mp4" type="video/mp4"></video><figcaption>Aethel in motion</figcaption></figure>
+      <figure class="film"><video controls loop muted playsinline preload="none" poster="assets/img_18_e2bdc27465ea.jpg"><source src="assets/film_19_7306452a4763.mp4" type="video/mp4"></video><figcaption>A moment, moving</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <div class="head" style="margin-bottom:22px"><h2>About the studio</h2></div>
+      <p>Dragon Soul Surge is a one-person studio in Statesville, North Carolina. Everything here — the character, the scenes, the films, the worlds — is made in-house, one frame at a time.</p>
+      <p>Aethel is the through-line: a white-haired, ram-horned figure moving through golden boardwalks, off-world interiors, and rain-soaked streets. The work is about getting the light, the mood, and the moment right.</p>
+    </div>
+    <figure class="about-portrait"><img src="assets/img_20_34ae6fecce2d.jpg" alt="Aethel, studio portrait"><figcaption class="cap">Aethel</figcaption></figure>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Want to see more, or work together? <span class="flame">Reach out.</span></h2>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="mailto:larrygabriel4@gmail.com">Send an email</a>
+      <a class="btn btn-ghost" href="#gallery">Back to the work</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Dragon Soul Surge</span>
+    <span>The world of Aethel</span>
+  </div>
+</footer>
+</body>
+</html>
